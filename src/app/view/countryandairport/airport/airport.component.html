@@ -1,0 +1,44 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> All Airport List
+        </div>
+        <div class="card-body">
+          <button type="button" class="btn btn-success pull-right" (click)="addNewAirport()"><i class="fa fa-plus">
+
+          </i>&nbsp;Add Airports</button>
+
+          <table  datatable [dtOptions]="dtOptions" [dtTrigger] = "dtTrigger" class="table table-bordered table-striped table-sm">
+            <thead>
+              <tr>
+                <th>S.No</th>
+                <th>Airport Name</th>
+                <th>Airport Code</th>
+                <th>Country Name</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr  *ngFor = "let x of airportList;index as i ">
+                <td>{{i+1}}</td>
+                <td>{{x.airports_name}}</td>
+                <td>{{x.airports_code}}</td>
+                <td>{{x.countryName}}</td>
+                <td>
+                  <span class="badge badge-success" *ngIf="x.is_active">Active</span>
+                  <span class="badge badge-danger" *ngIf="!x.is_active">Deactive</span>
+                </td>
+                <td><a href="javascript:(void)"><i class="fa fa-pencil-square fa-lg mt-4"  (click)="updateAirport(x)"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!--/.col-->
+  </div>
+  <!--/.row-->
+</div>

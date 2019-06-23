@@ -1,0 +1,75 @@
+<div class="col-sm-12">
+    <div class="card">
+    <div class="card-header">
+    <strong>{{title}}</strong>
+    </div>
+    <div class="card-body">
+    
+    <form [formGroup]="createCountryForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="form-group">
+    <label for="name">Country Code</label>
+    <!-- <input type="text" class="form-control" id="name" placeholder="Enter Country Code"> -->
+    <input type="text" formControlName="countryCode" class="form-control" placeholder="Enter Country Code"
+    [ngClass]="{ 'is-invalid': submitted && f.countryCode.errors }" />
+    <div *ngIf="submitted && f.countryCode.errors" class="invalid-feedback">
+    <div *ngIf="f.countryCode.errors.required">Country Code is required</div>
+    </div>
+    </div>
+    </div>
+    </div><!--/.row-->
+    
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="form-group">
+    <label for="ccnumber">Country Name</label>
+    <!-- <input type="text" class="form-control" id="ccnumber" placeholder="Enter Country Name"> -->
+    <input type="text" formControlName="countryName" class="form-control" placeholder="Enter Country Name"
+    [ngClass]="{ 'is-invalid': submitted && f.countryName.errors }" />
+    <div *ngIf="submitted && f.countryName.errors" class="invalid-feedback">
+    <div *ngIf="f.countryName.errors.required">Country Name is required</div>
+    </div>
+    
+    </div>
+    </div>
+    </div><!--/.row-->
+    
+    <div class="row">
+    <div class="col-sm-12">
+    <div class="form-group">
+    <label for="ccnumber">Currency Code</label>
+    <!-- <input type="text" class="form-control" id="ccnumber" placeholder="Enter Currency Code"> -->
+    <input type="text" formControlName="currencyCode" class="form-control" placeholder="Enter Currency Code"
+    [ngClass]="{ 'is-invalid': submitted && f.currencyCode.errors }" />
+    <div *ngIf="submitted && f.currencyCode.errors" class="invalid-feedback">
+    <div *ngIf="f.currencyCode.errors.required">Currency Code is required</div>
+    </div>
+    </div>
+    </div>
+    </div><!--/.row-->
+
+    <div class="form-group row">
+        <div class="col-md-9 col-form-label">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" formControlName="isActive"  >
+            <label class="form-check-label" for="active">Is Active </label>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="row">
+    <div class="form-group col-sm-2">
+    <button class="btn btn-block btn-primary"><i class="fa fa-dot-circle-o"></i> {{buttonTitle}}</button>
+    </div>
+    </div><!--/.row-->
+    </form>
+    <div class="row">
+    <div class="form-group col-sm-2">
+    <button class="btn btn-block btn-primary" (click)="resetForm()" *ngIf="!isActive"><i class="fa fa-dot-circle-o"></i> Reset</button>
+    </div>
+    </div><!--/.row-->
+    </div>
+    </div>
+    </div><!--/.col-->

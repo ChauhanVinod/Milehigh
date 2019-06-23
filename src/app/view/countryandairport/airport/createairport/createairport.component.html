@@ -1,0 +1,103 @@
+<div class="col-sm-12">
+  <div class="card">
+    <div class="card-header">
+      <strong>{{title}}</strong>
+    </div>
+    <div class="card-body">
+
+      <form  [formGroup]="createAirportForm" (ngSubmit)="onSubmit()">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="name">Airport Code</label>
+            <!-- <input type="text" class="form-control" id="name" placeholder="Enter Country Code"> -->
+            <input type="text" formControlName="airportCode" class="form-control"  placeholder="Enter Airport Code"
+             [ngClass]="{ 'is-invalid': submitted && f.airportCode.errors }" />
+           <div *ngIf="submitted && f.airportCode.errors" class="invalid-feedback">
+               <div *ngIf="f.airportCode.errors.required">Airport Code is required</div>
+          </div>
+          </div>
+        </div>
+      </div><!--/.row-->
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label for="ccnumber">Airport Name</label>
+            <!-- <input type="text" class="form-control" id="ccnumber" placeholder="Enter Country Name"> -->
+            <input type="text" formControlName="airportName" class="form-control"  placeholder="Enter Airport Name"
+            [ngClass]="{ 'is-invalid': submitted && f.airportName.errors }" />
+          <div *ngIf="submitted && f.airportName.errors" class="invalid-feedback">
+              <div *ngIf="f.airportName.errors.required">Airport Name is required</div>
+         </div>
+
+          </div>
+        </div>
+      </div><!--/.row-->
+
+      <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">City Code</label>
+              <!-- <input type="text" class="form-control" id="ccnumber" placeholder="Enter Currency Code"> -->
+              <input type="text" formControlName="cityCode" class="form-control"  placeholder="Enter City Code"
+              [ngClass]="{ 'is-invalid': submitted && f.cityCode.errors }" />
+            <div *ngIf="submitted && f.cityCode.errors" class="invalid-feedback">
+                <div *ngIf="f.cityCode.errors.required">City Code is required</div>
+           </div>
+            </div>
+          </div>
+        </div><!--/.row-->
+
+        <div class="row">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="ccnumber">City Name</label>
+                <!-- <input type="text" class="form-control" id="ccnumber" placeholder="Enter Currency Code"> -->
+                <input type="text" formControlName="cityName" class="form-control"  placeholder="Enter City Name"
+                [ngClass]="{ 'is-invalid': submitted && f.cityName.errors }" />
+              <div *ngIf="submitted && f.cityName.errors" class="invalid-feedback">
+                  <div *ngIf="f.cityName.errors.required">City Name is required</div>
+             </div>
+              </div>
+            </div>
+          </div><!--/.row-->
+
+
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="ccnumber">Select Country</label>
+              <select class="js-example-basic-single" name="country" style="width: 250px;" 
+              formControlName="countryName"  class="form-control"   
+                 [ngClass]="{ 'is-invalid': submitted && f.countryName.errors }" >
+                  <option value="">Please select Country</option>
+                <option *ngFor="let x of countryList" value="{{x.id}}">{{x.country_name}}</option>
+              </select>
+              <div *ngIf="submitted && f.cityName.errors" class="invalid-feedback">
+                  <div *ngIf="f.cityName.errors.required">Country Name is required</div>
+             </div>
+           </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-md-9 col-form-label">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" formControlName="isActive"  >
+                  <label class="form-check-label" for="active">Is Active </label>
+                </div>
+              </div>
+            </div>
+      
+
+
+        <div class="form-group col-2">
+            <button  class="btn btn-block btn-primary"><i class="fa fa-dot-circle-o"></i> {{buttonTitle}}</button>
+          </div>
+          
+        </form>
+    </div>
+  </div>
+</div><!--/.col-->
